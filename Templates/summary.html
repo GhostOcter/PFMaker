@@ -1,0 +1,18 @@
+{% extends "navbar.html" %}
+{% block main %}
+    <section>
+        <h1>Présentation rapide</h1>
+        {% if summary_content != "" %}
+            <p>{{summary_content}}</p> 
+        {% else %}
+            <p> Cet utilisateur n'a pas rempli sa présentation....<br/></p> 
+        {% endif %}
+    </section>
+    <section>
+        <h1>Quelques statistiques...</h1>
+        {% for language in percent_stats %}
+            <p>- {{language}} : {{percent_stats[language]}} % <br/></p>
+        {% endfor %}
+    </section>
+{% endblock main %}
+    

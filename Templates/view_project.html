@@ -1,0 +1,10 @@
+{% extends "navbar.html" %}
+{% block main %}
+    <section>
+        <h1>Présentation du projet nommé {{ project_name }} :</h1>
+        <p>Ce projet a été codé majoritairement en {{ project_language }} et est disponible à l'addresse suivante : 
+            <a style="font-size:1.15em;font-weight: 200; " href="{{project_link}}" title="{{project_link}}">cliquez ici.</a><br/><br/>
+            {{project_description}}
+        </p>
+    </section>
+{% endblock main %}

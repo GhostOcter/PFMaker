@@ -1,0 +1,22 @@
+{% extends "navbar.html" %}
+{% block main %}
+    <section>
+        <h1>Gestion de vos projets:</h1>
+        <div class="project_container">
+            <a href="{{url_for('add_project')}}" class="project" title="Ajouter un nouveau projet">
+                <span class="material-icons" style = "font-size: 36px;">
+                    add_circle_outline
+                </span>
+                <h3>Ajouter un nouveau projet</h3>
+            </a>
+            {% for project_name in projects%}
+                <a href="{{url_for('edit_project', project_name = project_name)}}" class="project" title="Editer ce projet">
+                    <span class="material-icons" style = "font-size: 36px;">
+                        work_outline
+                    </span>
+                    <h3>{{project_name}}</h3>
+                </a>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock main %}

@@ -1,0 +1,15 @@
+{% extends 'navbar.html' %}
+{% block main %}
+    <img src="{{url_for('static', filename='images/home_banner.png')}}" alt="L'outil rêvé, nous l'avons créé.">
+    <form action="#" method="post" id="register">
+        <div >
+            <h2>Identifiant :</h2>
+            <input type="text" name="username"/>
+        </div>
+        <div>
+            <h2>Mot de passe : </h2>
+            <input type="password" name="password"/>
+        </div>
+        <input type="submit" style = "left:30%;"/>
+    </form>
+{% endblock main %}

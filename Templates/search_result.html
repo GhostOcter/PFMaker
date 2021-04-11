@@ -1,0 +1,20 @@
+{% extends "navbar.html" %}
+{% block main %}
+    <section>
+        <h1>Résultat de la recherche:</h1>
+        {% if result_users|length == 0 %}
+            <p >Aucuns résultats... INFO : les langages que l'on peut rechercher sont Python, Rust, JS, PHP, C++ et C.</p>
+        {% else %}
+            <div class="project_container">
+                {% for user in result_users%}
+                    <a href="{{ url_for('summary', user = user) }}" class="project" title="Voir ce profil">
+                        <span class="material-icons" style = "font-size: 36px;">
+                            perm_identity
+                        </span>
+                        <h3>{{user}}</h3>
+                    </a>
+                {% endfor %}            
+            </div>
+        {% endif %}
+    </section>
+{% endblock main %}

@@ -1,0 +1,16 @@
+{% extends "navbar.html" %}
+{% block main %}
+    <section>
+        <h1>Projets de {{user}}:</h1>
+        <div class="project_container">
+            {% for project_name in projects%}
+                <a href="{{url_for('view_project', user = user, project_name = project_name)}}" class="project" title="Voir ce projet">
+                    <span class="material-icons" style = "font-size: 36px;">
+                        work_outline
+                    </span>
+                    <h3>{{project_name}}</h3>
+                </a>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock main %}

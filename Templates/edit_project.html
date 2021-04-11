@@ -1,0 +1,32 @@
+{% extends "navbar.html" %}
+{% block main %}
+    <form action="#" id="project_editor" method="post">
+        <div>
+            <h3>Nom du projet :</h3>
+            <input type="text" name="project_name" value="{{project_name}}" required/>
+        </div>
+        <div>
+            <h3>Lien vers le projet : </h3>
+            <input type="url" name="project_link" value="{{project_link}}" required/>
+        </div>
+        <div>
+            <h3>Langage utilisé (le plus important) : </h3>
+            <select name="project_language">
+                {% for language in project_languages %}
+                    {% if project_languages[language] == False %}
+                        <option value="{{language}}">{{language}}</option>
+                    {% else %}
+                        <option value="{{language}}" selected = "selected">{{language}}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <h3>Description rapide: </h3>
+            <textarea name="project_description" id="" cols="40" rows="20">{{project_description}}</textarea>
+        </div>
+        <div>
+            <input type="submit" style="left: 30%;"/>
+        </div>
+    </form>
+{% endblock main %}

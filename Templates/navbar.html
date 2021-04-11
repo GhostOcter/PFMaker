@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename = 'home_banner.png') }}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'styles/reset.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'styles/main.css')}}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <title>PFMaker</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div>
+                <a href="{{url_for('home')}}" id="PFM">PFM</a>
+                {% if is_profile == True %}
+                    <a href="{{ url_for('summary', user = user) }}">Résumé</a>
+                    <a href="{{ url_for('projects', user = user) }}">Projets</a>
+                {% else %}
+                    {% if is_login %}
+                        <a href="{{url_for('your_summary')}}">Votre résumé</a>
+                        <a href="{{url_for('your_projects')}}">Vos projets</a>
+                    {% endif %}
+                {% endif %}
+            </div> 
+            <div class="right">
+                {% if is_home == True %}
+                <form action="#" method="post">
+                    <input type="text" name="search" id="search_bar" value="{{current_search}}" placeholder="Rechercher"/>
+                    <select name="search_type">
+                        <option value="name">par nom</option>   
+                        <option value="language">par langage</option>
+                    </select>
+                    <span class="material-icons" style="font-size: 36px;">search</span>
+                    <input type="submit" value="" id="search_submit"/>
+                </form>                
+                {% endif %}
+                {% if is_login == False %}
+                    <a href="{{url_for('register')}}" id="register" class="button">S'inscrire</a>
+                    <a href="{{url_for('login')}}" id="signin" class="button">Se connecter</a> 
+                {% else %}
+                    <a href="{{url_for('logout')}}" id="signin" class="button">Se déconnecter</a> 
+                {% endif %}
+            </div> 
+        </nav>
+    </header>
+    <main>
+        {% block main %}
+        {% endblock main %}
+    </main>
+</body>
